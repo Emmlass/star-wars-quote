@@ -12,12 +12,12 @@
         <input type="text" name = "quote" placeholder="Your Quote" required> 
         <button type="submit">Submit</button>
     </form>
-    <%= quotes %>
+   
     <h2>Quotes</h2>
     <ul class="quotes">
-        <% for(let i=0; i<quotes.length; i++){%>
+        <% for(let i=0; i<quotes.length; i++) {%>
             <li class="quote">
-                <span><%= quotes[i].name:%></span>
+                <span><%= quotes[i].name%> :</span>
                 <span><%= quotes[i].quote%></span>
             </li>
         <% } %>
@@ -25,8 +25,10 @@
     <div>
         <h2>Darth Vader invades!</h2>
         <p>Replace first Yoda's quote with a quote written by Darth Vader</p>
-        <button id="update-button">Replace Yoda'3s quote</button>
+        <button id="update-button">Replace Yoda's quote</button>
     </div>
+
+    <script src="../public/main.js"></script>
     
 </body>
 </html>

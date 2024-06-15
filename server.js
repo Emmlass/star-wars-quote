@@ -6,6 +6,8 @@ import {MongoClient} from "mongodb";
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.urlencoded({extended:true}));
+app.use(express.static('public'));
+app.use(express.json());
 
 const connectionString = "mongodb://localhost:27017/"; //
 //mongodb+srv://emmlass:6ooW49QtuBo6485q@star-wars-quotes.zbxnon3.mongodb.net/Replace with your actual connection string
@@ -24,9 +26,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(client 
       .then((results)=>{
         res.render("index.ejs", {quotes: results})
       })
-
-
     });
+
 
     app.post("/quotes", (req, res) => {
       quotesCollection.insertOne(req.body)
@@ -35,6 +36,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true }).then(client 
         res.redirect("/")
       })
         
+    app.put('/quotes',(req,res)=>{
+      console.log(req.body)
+    })
     // app.listen(3000,()=>{
     //     console.log('Server is running on port 3000');
     //   });
